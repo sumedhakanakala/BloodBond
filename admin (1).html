@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Details</title>
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+        }
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+        .table-hover tbody tr:hover {
+            color: #495057;
+            background-color: rgba(0, 0, 0, 0.075);
+        }
+        .table-bordered {
+            border: 1px solid #dee2e6;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        .bg-info {
+            background-color: #17a2b8 !important;
+            color: white;
+        }
+        .text-right {
+            text-align: right;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            background-color: transparent;
+        }
+        a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        img {
+            border-radius: 50%;
+        }
+        .approve-button {
+            background-color: #007bff;
+            border-color: #007bff;
+            border-style: solid;
+            border-width: 1px;
+            color: white;
+            height: 36px;
+            width: 110px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        .reject-button {
+            background-color: #c20202e5;
+            color: white;
+            border: none;
+            height: 36px;
+            width: 110px;
+            border-radius: 2px;
+            cursor: pointer;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">DONOR DETAILS</h2><hr><br>
+        <br>
+        <table class="table table-light table-hover table-bordered table-striped">
+            <thead class="bg-info">
+                <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Blood Group</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody id="donor-table-body">
+                <!-- Data will be populated here by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('fetch_donors.php')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById('donor-table-body');
+                    data.forEach(donor => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${donor.username}</td>
+                            <td>${donor.name}</td>
+                            <td>${donor.age}</td>
+                            <td>${donor.email}</td>
+                            <td>${donor.phone}</td>
+                            <td>${donor.blood_group}</td>
+                            <td>${donor.location}</td>
+                            <td>${donor.gender}</td>
+                            <td class="text-center">
+                                <button class="approve-button" data-username="${donor.username}">APPROVE</button>
+                                <button class="reject-button" data-username="${donor.username}">REJECT</button>
+                            </td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+
+                    document.querySelectorAll('.approve-button').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const username = this.getAttribute('data-username');
+                            updateStatus(username, 'approved');
+                        });
+                    });
+
+                    document.querySelectorAll('.reject-button').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const username = this.getAttribute('data-username');
+                            deleteDonor(username);
+                        });
+                    });
+                })
+                .catch(error => console.error('Error fetching donor data:', error));
+        });
+
+        function updateStatus(username, status) {
+            fetch('update_status.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username: username, status: status })
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                location.reload();
+            })
+            .catch(error => console.error('Error updating status:', error));
+        }
+
+        function deleteDonor(username) {
+            fetch('delete_donor.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `username=${username}`
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                location.reload();
+            })
+            .catch(error => console.error('Error deleting donor:', error));
+        }
+    </script>
+</body>
+</html>

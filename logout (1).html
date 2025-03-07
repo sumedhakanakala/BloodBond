@@ -1,0 +1,89 @@
+<html>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+}
+
+.logout-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #d32f2f;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.logout-button {
+    background-color: #d32f2f;
+    color: white;
+}
+
+.cancel-button {
+    background-color: #ccc;
+    color: black;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+    </style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout - Blood Bond</title>
+    <link rel="stylesheet" href="logoutstyles.css">
+</head>
+<body>
+    <div class="logout-container">
+        <h1>Logout</h1>
+        <p>Are you sure you want to logout?</p>
+        <div class="buttons">
+            <button class="logout-button" onclick="confirmLogout()">Logout</button>
+            <button class="cancel-button" onclick="cancelLogout()">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        function confirmLogout() {
+            // Redirect to logout action or page
+            window.location.href = 'login.html'; // Adjust this to your logout action
+        }
+
+        function cancelLogout() {
+            // Redirect back to the previous page or dashboard
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

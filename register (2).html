@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="registerstyles.css">
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Register</h2>
+        <form action="connect.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="blood_group">Blood Group</label>
+                <select id="blood_group" name="blood_group" required>
+                    <option value="">Select</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="location">Location</label>
+                <select id="location" name="location" required>
+                    <option value="select">Select</option>
+                    <option value="Adilabad">Adilabad</option>
+                    <option value="Nizamabad">Nizamabad</option>
+                    <option value="Karimanagar">Karimanagar</option>
+                    <option value="Medak">Medak</option>
+                    <option value="Warangal">Warangal</option>
+                    <option value="Rangareddy">Rangareddy</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Mahbubnagar">Mahbubnagar</option>
+                    <option value="Nalgonda">Nalgonda</option>
+                    <option value="Khammam">Khammam</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Gender</label><br>
+                <label><input type="radio" name="gender" value="male" required> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+                <label><input type="radio" name="gender" value="other"> Other</label>
+            </div>
+            
+            <div class="form-group">
+                <label for="id_proof">ID Proof (Attach File)</label>
+                <input type="file" id="id_proof" name="id_proof" accept=".jpg, .jpeg, .png, .pdf">
+            </div>
+            
+            <div class="form-group">
+                <label>When was the last time you donated blood?</label><br>
+                <label><input type="radio" name="donated_before" value="month ago" required> Month ago</label>
+                <label><input type="radio" name="donated_before" value="6 months ago">6 months ago</label>
+                <label><input type="radio" name="donated_before" value="year ago">Year ago</label>
+                <label><input type="radio" name="donated_before" value="No previous donation"> No previous donation</label>
+            </div>
+            
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Do you have any health problems?</label><br>
+                <label><input type="radio" name="health_problems" value="yes" required> Yes</label>
+                <label><input type="radio" name="health_problems" value="no"> No</label>
+            </div>
+            
+            <div class="form-group" id="health-problems-details" style="display: none;">
+                <label for="health_problems_details">Please specify</label>
+                <textarea id="health_problems_details" name="health_problems_details"></textarea>
+            </div>
+            
+            <button type="submit" name="save" value="submit">Register</button>
+        </form>
+        
+        <div class="options">
+            <a href="login.html">Already have an account? Login</a>
+        </div>
+    </div>
+
+    <script>
+        // Show/Hide health problems details based on selection
+        document.querySelectorAll('input[name="health_problems"]').forEach((elem) => {
+            elem.addEventListener("change", function(event) {
+                var healthProblemsDetails = document.getElementById("health-problems-details");
+                if (event.target.value === "yes") {
+                    healthProblemsDetails.style.display = "block";
+                } else {
+                    healthProblemsDetails.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

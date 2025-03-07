@@ -1,0 +1,107 @@
+<html>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color:rgb(239, 227, 227);
+}
+
+.login-container {
+    width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background: linear-gradient(to top, #f8fdf8, #f9abab);
+    border-color: blue;
+    border-bottom: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    width: 70%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #e73030;
+    color: #fff;
+    cursor: pointer;
+    margin-left:50px;
+}
+
+button:hover {
+    background-color: #b30000a3;
+}
+
+.options {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.options a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.options a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="login.php" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </form>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="options">
+            <a href="forgot.php">Forgot Password?</a>
+            <span> | </span>
+            <a href="register.html">Register</a>
+        </div>
+    </div>
+    <script>
+        function Login() {
+            
+            window.location.href = "main.html"; 
+        }
+
+        function cancelLogout() {
+            window.location.href = "main.html";
+        }
+    </script>
+
+</body>
+</html>

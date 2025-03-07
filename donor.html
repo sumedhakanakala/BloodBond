@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donor Page - Donate Blood</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:rgb(239, 227, 227);
+        }
+
+        .registration-container {
+            width: 1000px;
+            margin: 200px;
+            padding: 50px;
+            background: linear-gradient(to top, #f8fdf8, #f9abab);
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"], 
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .options {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .options a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .options a:hover {
+            text-decoration: underline;
+        }
+
+        #health-problems-details {
+            margin-top: 10px;
+        }
+
+        #health-problems-details textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Donor Page - Donate Blood</h2>
+        <form method="POST" action="adminconnect.php">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="name"> Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="blood-group">Blood Group</label>
+                <select id="blood-group" name="blood_group" required>
+                    <option value="">Select</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+            </div>
+             <div class="form-group">
+                <label for="location">Location</label>
+                <select id="location" name="location" required>
+                    <option value="select">Select</option>
+                    <option value="Adilabad">Adilabad</option>
+                    <option value="Nizamabad">Nizamabad</option>
+                    <option value="Karimanagar">Karimanagar</option>
+                    <option value="Medak">Medak</option>
+                    <option value="Warangal">Warangal</option>
+                    <option value="Rangareddy">Rangareddy</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Mahbubnagar">Mahbubnagar</option>
+                    <option value="Nalgonda">Nalgonda</option>
+                    <option value="Khammam">Khammam</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Gender</label><br>
+                <label><input type="radio" name="gender" value="male" required> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+                <label><input type="radio" name="gender" value="other"> Other</label>
+            </div>
+            <button type="submit" name="save">DONATE BLOOD</button>
+        </form>
+    </div>
+</body>
+</html>
